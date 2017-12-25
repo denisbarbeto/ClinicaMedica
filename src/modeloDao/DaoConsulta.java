@@ -20,7 +20,7 @@ public class DaoConsulta {
     ConexaoDB conex = new ConexaoDB(); //Conexão Principal
     ConexaoDB conexAgenda = new ConexaoDB(); //Conexão para trazer a Data do Agendamento
     ConexaoDB conexMotivo = new ConexaoDB(); //Conexão para trazer o Motivo da Consulta
-    
+   public int Id_Agenda;
    
 
     
@@ -33,13 +33,13 @@ public class DaoConsulta {
         try {
             PreparedStatement pst = conex.con.prepareStatement
 ("insert into consulta "
-+ "(consulta_idagendamento, consulta_diagnostico,consulta_receita, data_hora_ini, data_hora_fin)"
-+ "values (?,?,?,?,?)");
-           pst.setInt(1,agenda.getAgendaId());
-           pst.setString(2,consulta.getDiagnostico());
-           pst.setString(3,consulta.getReceita());
-           pst.setDate(4, new java.sql.Date(agenda.getData().getTime()));
-           pst.setDate(5, new java.sql.Date(consulta.getData_fin().getTime()));
++ "(consulta_diagnostico,consulta_receita, data_hora_ini, data_hora_fin)"
++ "values (?,?,?,?)");
+           
+           pst.setString(1,consulta.getDiagnostico());
+           pst.setString(2,consulta.getReceita());
+           pst.setDate(3, new java.sql.Date(consulta.getData_ini().getTime()));
+           pst.setDate(4, new java.sql.Date(consulta.getData_fin().getTime()));
            pst.execute();
            JOptionPane.showMessageDialog(null,"Dados da Consulta Salvo com Sucesso");
            
@@ -76,4 +76,18 @@ public class DaoConsulta {
         }
     }
     */
+        
+        public int BuscarIdAgenda (int IdAgenda){
+            
+            conexAgenda.getConnection();
+            conexAgenda.executaSql("select * from agenda where id_agenda '"+IdAgenda+"'");
+            try {
+                conexAgenda.rs.first();
+                Id_Agenda = conexAgenda.rs.getInt("id_agenda") ;
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao Buscar Id na Tabela Agenda" + ex);
+            }
+            
+             return Id_Agenda;
+        }
 }

@@ -27,7 +27,19 @@ public class DaoPaciente {
        
         try {
             PreparedStatement pst = conex.con.prepareStatement("insert into pacientes"
-                    + "(nome_paciente,nasc_paciente,rg_paciente, telefone, rua_paciente, cep_paciente, complemento, bairro_paciente) values (?,?,?,?,?,?,?, ?)");
+                    + "(nome_paciente,"
+                    + "nasc_paciente,"
+                    + "rg_paciente, "
+                    + "telefone, "
+                    + "rua_paciente, "
+                    + "cep_paciente, "
+                    + "complemento, "
+                    + "bairro_paciente,"
+                    + "cpf_paciente, "
+                    + "numero,"
+                    + "cidade_paciente,"
+                    + "estado_paciente,"
+                    + "celular_paciente) values (?,?,?,?,?,?,?,?,?,?,?,?,?)");
             pst.setString(1,mod.getNome_paciente());
             pst.setString(2,mod.getNasc_paciente());
             pst.setString(3,mod.getRg());
@@ -36,6 +48,12 @@ public class DaoPaciente {
             pst.setString(6,mod.getCep());
             pst.setString(7,mod.getComplemento());
             pst.setString(8,mod.getBairro());
+            pst.setString(9,mod.getCpf());
+            pst.setInt(10,mod.getNumero());
+            pst.setString(11,mod.getCidade());
+            pst.setString(12,mod.getEstado());
+            pst.setString(13,mod.getCelular());
+            
             pst.execute(); 
             JOptionPane.showMessageDialog(null,"Paciente Cadastrado com Sucesso!");
             
@@ -50,7 +68,21 @@ public void Editar(BeansPaciente mod){ //Salvar no banco de Dados
      conex.getConnection();
        
         try {
-            PreparedStatement pst = conex.con.prepareStatement("update pacientes set nome_paciente=?, nasc_paciente=?, rg_paciente=?, telefone=?, rua_paciente=?, cep_paciente=?, complemento=?, bairro_paciente=? where id_paciente=?");
+            PreparedStatement pst = conex.con.prepareStatement("update pacientes set nome_paciente=?,"
+                    + " nasc_paciente=?,"
+                    + " rg_paciente=?, "
+                    + "telefone=?, "
+                    + "rua_paciente=?, "
+                    + "cep_paciente=?, "
+                    + "complemento=?, "
+                    + "bairro_paciente=?"
+                    + "cpf_paciente=?,"
+                    + "numero=?,"
+                    +"cidade_paciente=?,"
+                    +"estado_paciente=?,"
+                    +"celular_paciente=?," 
+                    + "where id_paciente=?");
+            
             pst.setString(1,mod.getNome_paciente());
             pst.setString(2,mod.getNasc_paciente());
             pst.setString(3,mod.getRg());
@@ -59,7 +91,13 @@ public void Editar(BeansPaciente mod){ //Salvar no banco de Dados
             pst.setString(6,mod.getCep());
             pst.setString(7,mod.getComplemento());
             pst.setString(8,mod.getBairro());
-            pst.setInt(9,mod.getId_paciente());
+            pst.setString(9,mod.getCpf());
+            pst.setInt(10,mod.getNumero());
+            pst.setString(11,mod.getCidade());
+            pst.setString(12,mod.getEstado());
+            pst.setString(13,mod.getCelular());
+            
+            pst.setInt(14,mod.getId_paciente());
             pst.execute(); 
             JOptionPane.showMessageDialog(null,"Paciente Alterado com Sucesso!");
             
@@ -82,6 +120,11 @@ public BeansPaciente  buscaPaciente (BeansPaciente mod){
             mod.setCep(conex.rs.getString("cep_paciente"));
             mod.setComplemento(conex.rs.getString("complemento"));
             mod.setBairro(conex.rs.getString("bairro_paciente"));
+            mod.setCpf(conex.rs.getString("cpf_paciente"));
+            mod.setNumero(conex.rs.getInt("numero"));
+            mod.setCidade(conex.rs.getString("cidade_paciente"));
+            mod.setEstado(conex.rs.getString("estado_paciente"));
+            mod.setCelular(conex.rs.getString("celular_paciente"));
             mod.setId_paciente(conex.rs.getInt("id_paciente"));
             
             

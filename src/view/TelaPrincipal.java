@@ -237,7 +237,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jInternalFrameBemVindo.getContentPane().add(jLabel1);
         jLabel1.setBounds(10, 0, 220, 30);
 
-        jButtonExitB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/exit.png"))); // NOI18N
+        jButtonExitB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/exitb.png"))); // NOI18N
         jButtonExitB.setToolTipText("Sair da Tela Bem Vindo");
         jButtonExitB.setBorder(null);
         jButtonExitB.addActionListener(new java.awt.event.ActionListener() {
@@ -293,8 +293,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/bookadd.png"))); // NOI18N
         jMenuCadastro.setText("Cadastro");
-        jMenuCadastro.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jMenuCadastro.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        jMenuCadastro.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jMenuItemCadMed.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemCadMed.setText("Médicos");
@@ -334,6 +333,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuCadastro);
 
+        jMenuRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/reladd.png"))); // NOI18N
         jMenuRelatorios.setText("Relatórios");
 
         jMenuItemRelPaciente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
@@ -363,6 +363,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuRelatorios);
 
+        jMenuFerramentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/tools.png"))); // NOI18N
         jMenuFerramentas.setText("Ferramentas");
 
         jMenuItemTBVindo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
@@ -403,6 +404,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuFerramentas);
 
+        jMenuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/exitb.png"))); // NOI18N
         jMenuSair.setText("Sair");
         jMenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
